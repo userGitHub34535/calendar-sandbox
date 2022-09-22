@@ -9,24 +9,22 @@ import Month from './Components/Month';
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   console.table(getMonth(3));
+  
   return (
-    // <div className="App">
-    <>
+    <React.Fragment>
 
       <input type="time" />
       <DateTimePicker  autoFocus={true} format="MM-dd-y HH:mm" value={new Date(Date.now())}/>
       <DateTimePicker  autoFocus={true} format="MM-dd-y HH:mm" value={new Date(Date.now())}/>
 
     <div className="h-screen flex flex-columns">
-      {/* <Calendar Header /> //todo-create/define this component */}
+      {/* <CalendarHeader /> */}
       <div className="flex flex-1">
         <Sidebar />
         <Month month={currentMonth} />
       </div>
     </div>
-
-    </>
-    // </div>
+    </React.Fragment>
   );
 }
 
