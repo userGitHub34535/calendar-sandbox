@@ -14,12 +14,12 @@ export default function Header() {
             <h1 className="mr-10 text-xl text-gray-500 font-bold">
                 Clock My Day
             </h1>
-            <button onClick={handlePrevMonth()}>
+            <button onClick={handlePrevMonth}>
                 <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
                     {`<`}
                 </span>
             </button>
-            <button onClick={handleNextMonth()}>
+            <button onClick={handleNextMonth}>
                 <span className="cursor-pointer mx-2">
                     {`>`}
                 </span>

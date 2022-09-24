@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GlobalContext = React.createContext({
-    monthIndex: Number.MAX_VALUE, //placeholder - to be changed to something meaningful
+    monthIndex: 8, //Number.MAX_VALUE, //placeholder - to be changed to something meaningful
     setMonthIndex: (index) => {}
 })
 

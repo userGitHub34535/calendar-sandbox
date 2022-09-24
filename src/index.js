@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Calendar from './Components/Calendar.js';
+import ContextWrapper from './Context/ContextWrapper';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <Calendar />
+    <ContextWrapper>
+      <App />
+      <Calendar />
+    </ContextWrapper>
   </React.StrictMode>
 );
 
