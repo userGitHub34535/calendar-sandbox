@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './App.css';
 import DateTimePicker from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
+import GlobalContext from './Context/GlobalContext';
 import {getMonth, getWeek} from './util.js';
 import CalendarHeader from './Components/CalendarHeader';
 import Sidebar from './Components/Sidebar';
@@ -11,6 +12,10 @@ import Week from './Components/Week';
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const [currentWeek] = useState(getWeek());
+  const {monthIndex} = useContext();
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex))
+  }, [monthIndex]) 
   console.table(getMonth(3));
   console.table(getWeek());  
   return (
