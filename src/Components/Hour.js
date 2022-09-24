@@ -9,7 +9,7 @@ export default function Hour({hour, colIdx, rowIdx}) {
                 </p>
             )}
             {rowIdx === 0 && (
-                <p className="text-sm">
+                <p className="text-sm flex items-center">
                     {hour.format("HH:mm:ss")}
                 </p>
                 )
