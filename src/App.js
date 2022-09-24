@@ -2,14 +2,16 @@ import React, {useState} from 'react';
 import './App.css';
 import DateTimePicker from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
-import {getMonth} from './util.js';
+import {getMonth, getWeek} from './util.js';
 import Sidebar from './Components/Sidebar';
 import Month from './Components/Month';
+import Week from './Components/Week';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const [currentWeek] = useState(getWeek());
   console.table(getMonth(3));
-  
+  console.table(getWeek());  
   return (
     <React.Fragment>
 
@@ -22,6 +24,7 @@ function App() {
       <div className="flex flex-1">
         <Sidebar />
         <Month month={currentMonth} />
+        <Week week={currentWeek} />
       </div>
     </div>
     </React.Fragment>

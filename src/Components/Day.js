@@ -8,7 +8,7 @@ export default function Day({day/*, rowIdx*/}) {
                 <p className="text-sm mt-1">
                     {day.format("ddd").toUpperCase()}
                 </p>
-            /*)*/}            
+            }            
             <p className="text-sm p-1 my-1 text-center">
                 {day.format("DD")}
             </p>    
