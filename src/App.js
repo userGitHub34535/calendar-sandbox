@@ -11,7 +11,7 @@ import Week from './Components/Week';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const [currentWeek] = useState(getWeek());
+  const [currentWeek, setCurrentWeek] = useState(getWeek());
   const {monthIndex} = useContext(GlobalContext);
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex))
