@@ -18,6 +18,8 @@ export function getWeek(weekOfYearProp = dayjs().week()) {
     var hoursMatrix_24_7 = new Array(24).fill([]).map(() => {       
         hourIterator++;
 
+        //I could shorten this method with a .map() function...
+        //...BUT this verbose code is easier to maintain, when a different person tries to understand this date math
         var hourRow = [];
         const MonOfWeek = dayjs().week(weekOfYearProp).day(1).hour(hourIterator).minute(0).second(0);
         const TueOfWeek = dayjs().week(weekOfYearProp).day(2).hour(hourIterator).minute(0).second(0);  
@@ -32,7 +34,7 @@ export function getWeek(weekOfYearProp = dayjs().week()) {
             return hourRow[i];
         })); 
     });
-    
+
     return hoursMatrix_24_7;
 }
 

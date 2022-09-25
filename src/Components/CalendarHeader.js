@@ -10,28 +10,34 @@ export default function Header() {
         setMonthIndex(monthIndex + 1);
     }
     function handlePrevWeek() {
-        setMonthIndex(weekIndex - 1);
+        setWeekIndex(weekIndex - 1);
     }
     function handleNextWeek() {
-        setMonthIndex(weekIndex + 1);
+        setWeekIndex(weekIndex + 1);
     }
     return (
         <header>
             <h1 className="mr-10 text-xl text-gray-500 font-bold">
                 Clock My Day
             </h1>
-            <button onClick={() => {
-                this.handlePrevMonth(); 
-                this.handlePrevWeek();
-                }}>
+            <button onClick={handlePrevWeek
+            }
+                // () => {
+                // this.handlePrevMonth(); 
+                // this.handlePrevWeek();
+                // }}
+                >
                 <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
                     {`<`}
                 </span>
             </button>
-            <button onClick={() => {
-                this.handleNextMonth(); 
-                this.handleNextWeek();
-                }}>
+            <button onClick={handleNextWeek
+            }
+                // () => {
+                // this.handleNextMonth(); 
+                // this.handleNextWeek();
+                // }}
+                >
                 <span className="cursor-pointer mx-2">
                     {`>`}
                 </span>

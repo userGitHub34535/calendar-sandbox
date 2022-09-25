@@ -6,6 +6,8 @@ export default function Hour({hour, colIdx, rowIdx}) {
             {colIdx ===0 && (
                 <p>
                     {hour.format("ddd").toUpperCase()}
+                    <br />
+                    {hour.format("MMM-DD").toUpperCase()}
                 </p>
             )}
             {rowIdx === 0 && (

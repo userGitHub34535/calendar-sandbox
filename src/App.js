@@ -12,11 +12,16 @@ import Week from './Components/Week';
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const [currentWeek, setCurrentWeek] = useState(getWeek());
-  const {monthIndex} = useContext(GlobalContext);
+  const {monthIndex, weekIndex} = useContext(GlobalContext);
+  
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex))
   }, [monthIndex]) 
-  console.table(getMonth(3));
+  
+  useEffect(() => {
+    setCurrentWeek(getWeek(weekIndex))
+  }, [weekIndex])
+
   console.table(getWeek());  
   return (
     <React.Fragment>
