@@ -1,13 +1,12 @@
 import React, {useState, useContext, useEffect} from 'react';
 import './App.css';
-import DateTimePicker from 'react-datetime-picker';
-import TimePicker from 'react-time-picker';
 import GlobalContext from './Context/GlobalContext';
 import {getMonth, getWeek} from './util.js';
 import CalendarHeader from './Components/CalendarHeader';
 import Sidebar from './Components/Sidebar';
 import Month from './Components/Month';
 import Week from './Components/Week';
+import TimeLaboredForm from './Components/TimeLaboredForm';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -25,12 +24,7 @@ function App() {
   console.table(getWeek());  
   return (
     <React.Fragment>
-
-      <input type="time" />
-      <DateTimePicker  autoFocus={true} format="MM-dd-y HH:mm" value={new Date(Date.now())}/>
-      <DateTimePicker  autoFocus={true} format="MM-dd-y HH:mm" value={new Date(Date.now())}/>
-
-
+    <TimeLaboredForm />
     <div className="h-screen flex flex-columns">
       <CalendarHeader />
       <div className="flex flex-1">
