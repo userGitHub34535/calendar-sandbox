@@ -1,8 +1,10 @@
 //the EventModal.js
-import React, {useState} from 'react';
+import dayjs from 'dayjs';
+import React, {useState, useContext} from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import DateTimeInput from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
+import GlobalContext from '../Context/GlobalContext';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple", "gray"];  //n.b. labelsClasses
 
@@ -10,11 +12,18 @@ export default function TimeLaboredForm() {
     const [description, setDescription] = useState('');
     const [endTime, onChange] = useState(new Date());
     const [colorSelected, setColorSelected] = useState(colors[2]); //colors[0]
+    const {dispatchTLs} = useContext(GlobalContext);
 
-    function handleEndTime(e) {
-        console.log(e.value);
-        alert(e.value);
-        alert(e);
+    function handleSubmit(e) {
+        e.preventDefault(); //prevent page from reloading
+        const calendarTL = {
+            startTime: dayjs().subtract(2, 'day')
+            ,endTime: dayjs()
+            ,description 
+            ,colorSelected
+            ,id: Date.now()
+        }
+        dispatchTLs({type: 'push', payload: calendarTL}) 
     }
 
     return (
@@ -58,8 +67,11 @@ export default function TimeLaboredForm() {
                     </div>
                 </div>
             </div>
-            <footer className="flex justify-end w-100 border-t p-3 mt-5">
-                <button type="submit" className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white">
+            <footer className="flex justify-end border-t p-3 mt-5">
+                <button 
+                    type="submit" 
+                    className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
+                    onClick={handleSubmit}>
                     Save
                 </button>
             </footer>
