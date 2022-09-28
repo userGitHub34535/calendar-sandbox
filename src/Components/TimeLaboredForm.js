@@ -1,13 +1,15 @@
 //the EventModal.js
-
 import React, {useState} from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import DateTimeInput from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
 
+const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple", "gray"];  //n.b. labelsClasses
+
 export default function TimeLaboredForm() {
     const [description, setDescription] = useState('');
-    const [value, onChange] = useState(new Date());
+    const [endTime, onChange] = useState(new Date());
+    const [colorSelected, setColorSelected] = useState('');
 
     function handleEndTime(e) {
         console.log(e.value);
@@ -32,7 +34,7 @@ export default function TimeLaboredForm() {
                 <div className="grid grid-cols-1/5 items-end gap-y-7">
                     {/* <div></div> */}
                     <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={new Date(Date.now())}/>
-                    <DateTimePicker  autoFocus={true} format="HH:mm MM-dd-yyyy" onChange={onChange} onFocus={handleEndTime} value={value} disableClock={true} />
+                    <DateTimePicker  autoFocus={true} format="HH:mm MM-dd-yyyy" onChange={onChange} value={endTime} disableClock={true} />
                     <input 
                         type="text" 
                         name="description" 
@@ -41,6 +43,19 @@ export default function TimeLaboredForm() {
                         required
                         className="pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
                         onChange={(e) => setDescription(e.target.value)} />
+                    <span>
+                        colors
+                    </span>
+                    <div className="flex gap-x-2">
+                        {colors.map((col, i) => (
+                            <span 
+                                key={i}  
+                                className={`bg-${col}-500 w-6 h-6 rounded-full flex items-center justify-center`}
+                                onClick={() => setColorSelected(col)}>
+                                {colorSelected == col && <span >=</span>}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </form>
