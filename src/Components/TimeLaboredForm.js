@@ -9,7 +9,7 @@ const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple", 
 export default function TimeLaboredForm() {
     const [description, setDescription] = useState('');
     const [endTime, onChange] = useState(new Date());
-    const [colorSelected, setColorSelected] = useState('');
+    const [colorSelected, setColorSelected] = useState(colors[2]); //colors[0]
 
     function handleEndTime(e) {
         console.log(e.value);
@@ -52,12 +52,17 @@ export default function TimeLaboredForm() {
                                 key={i}  
                                 className={`bg-${col}-500 w-6 h-6 rounded-full flex items-center justify-center`}
                                 onClick={() => setColorSelected(col)}>
-                                {colorSelected == col && <span >=</span>}
+                                {colorSelected === col && <span >=</span>}
                             </span>
                         ))}
                     </div>
                 </div>
             </div>
+            <footer className="flex justify-end w-100 border-t p-3 mt-5">
+                <button type="submit" className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white">
+                    Save
+                </button>
+            </footer>
         </form>
     </div>
   )
