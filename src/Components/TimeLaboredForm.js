@@ -53,8 +53,8 @@ export default function TimeLaboredForm() {
             <div className="p-3 ">
                 <div className="grid grid-cols-1/5 items-end gap-y-7">
                     {/* <div></div> */}
-                    <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={startTime} onChange={(e) => setStartTime(startTime)} disableClock={true} />
-                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={endTime} onChange={(e)=>setEndTime(endTime)}  disableClock={true} />
+                    <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={startTime} onChange={setStartTime} disableClock={true} />
+                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={endTime} onChange={setEndTime}  disableClock={true} />
                     <input 
                         type="text" 
                         name="description" 
