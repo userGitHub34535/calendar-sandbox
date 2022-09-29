@@ -6,19 +6,30 @@ import DateTimeInput from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
 import GlobalContext from '../Context/GlobalContext';
 
-const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple", "gray"];  //n.b. labelsClasses
+const colors = [
+    "red"
+    ,"orange"
+    ,"yellow"
+    ,"green"
+    ,"blue"
+    ,"indigo"
+    ,"purple"
+    ,"gray"
+];
 
 export default function TimeLaboredForm() {
-    const [description, setDescription] = useState('');
-    const [endTime, onChange] = useState(new Date());
-    const [colorSelected, setColorSelected] = useState(colors[2]); //colors[0]
     const {dispatchTLs} = useContext(GlobalContext);
+
+    const [description, setDescription] = useState('');
+    const [startTime, setStartTime] = useState(new Date());
+    const [endTime, setEndTime] = useState(new Date());
+    const [colorSelected, setColorSelected] = useState(colors[2]); //colors[0]
 
     function handleSubmit(e) {
         e.preventDefault(); //prevent page from reloading
         const calendarTL = {
-            startTime: dayjs().subtract(2, 'day')
-            ,endTime: dayjs()
+            startTime
+            ,endTime
             ,description 
             ,colorSelected
             ,id: Date.now()
@@ -42,8 +53,8 @@ export default function TimeLaboredForm() {
             <div className="p-3 ">
                 <div className="grid grid-cols-1/5 items-end gap-y-7">
                     {/* <div></div> */}
-                    <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={new Date(Date.now())}/>
-                    <DateTimePicker  autoFocus={true} format="HH:mm MM-dd-yyyy" onChange={onChange} value={endTime} disableClock={true} />
+                    <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={startTime} onChange={(e) => setStartTime(startTime)} disableClock={true} />
+                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={endTime} onChange={(e)=>setEndTime(endTime)}  disableClock={true} />
                     <input 
                         type="text" 
                         name="description" 

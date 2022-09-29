@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import React from 'react'
+import React, {useContext} from 'react';
+import GlobalContext from '../Context/GlobalContext';
 
 export default function Day({day/*, rowIdx*/}) {
   
@@ -9,6 +10,8 @@ export default function Day({day/*, rowIdx*/}) {
             ? 'bg-blue-600 text-white rounded-full w-7'
             : '' );
     }
+
+    const {savedTLs} = useContext(GlobalContext);
   
     return (
     <div className="border border-gray-200 flex flex-col">
@@ -22,6 +25,13 @@ export default function Day({day/*, rowIdx*/}) {
                 {day.format("DD")}
             </p>    
         </header>
+        <body>
+            {savedTLs.map((TL) => (
+                <div className={`bg-red-500`}>
+                    {TL.description}
+                </div>
+            ))}
+        </body>
     </div>
   );
 }

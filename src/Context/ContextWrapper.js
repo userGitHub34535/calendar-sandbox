@@ -26,7 +26,7 @@ export default function ContextWrapper(props) {
     const [savedTLs, dispatchTLs] = useReducer(savedTLReducer, [], initSavedTLs);
 
   useEffect(() => {
-    localStorage.setItem("savedTLs", JSON.stringify(savedTLs));  //everytime savedTLs gets pdated, we save it to storage
+    localStorage.setItem("savedTLs", JSON.stringify(savedTLs));  //everytime savedTLs gets updated, we save it to storage
   }, [savedTLs])
 
     //require this plugin to use .week() here below
@@ -40,7 +40,8 @@ export default function ContextWrapper(props) {
       ,setMonthIndex
       ,weekIndex
       ,setWeekIndex
-      ,dispatchTLs }}>
+      ,dispatchTLs
+      ,savedTLs }}>
         {props.children}
     </GlobalContext.Provider>
   )

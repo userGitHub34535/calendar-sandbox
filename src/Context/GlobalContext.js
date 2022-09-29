@@ -6,6 +6,7 @@ const GlobalContext = React.createContext({
     ,weekIndex: 38  //Number.MAX_VALUE, //placeholder - to be changed to something meaningful
     ,setWeekIndex: (index) => {}
     ,dispatchTLs: ({type, payload}) => {}
+    ,savedTLs: []
 })
 
 export default GlobalContext;
