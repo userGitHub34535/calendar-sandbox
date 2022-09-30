@@ -28,7 +28,7 @@ export default function TimeLaboredForm() {
     function handleSubmit(e) {
         e.preventDefault(); //prevent page from reloading
         const calendarTL = {
-            startTime
+            startTime  //I think it's a great idea to save DateTimes to the DB as ISO 8601 (UTC) times, and then convert them to the locale time at the point of displaying them in the UI
             ,endTime
             ,description 
             ,colorSelected

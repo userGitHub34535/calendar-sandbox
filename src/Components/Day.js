@@ -1,9 +1,17 @@
 import dayjs from 'dayjs';
-import React, {useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import GlobalContext from '../Context/GlobalContext';
 
 export default function Day({day/*, rowIdx*/}) {
   
+    const [dayTLs, setDayTLs] = useState([]);
+    const {savedTLs} = useContext(GlobalContext);
+
+    useEffect(() => {
+        const relevantTLs = savedTLs.filter((tl) => dayjs(tl.startTime).format("DD-MM-YY") === day.format("DD-MM-YY"));
+        setDayTLs(relevantTLs);
+    }, [savedTLs, day]);
+
     function getCurrentDayClass() {
         return ( 
             day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") 
@@ -11,7 +19,7 @@ export default function Day({day/*, rowIdx*/}) {
             : '' );
     }
 
-    const {savedTLs} = useContext(GlobalContext);
+   
   
     return (
     <div className="border border-gray-200 flex flex-col">
@@ -26,9 +34,9 @@ export default function Day({day/*, rowIdx*/}) {
             </p>    
         </header>
         <body>
-            {savedTLs.map((TL) => (
-                <div className={`bg-red-500`}>
-                    {TL.description}
+            {dayTLs.map((tl, idx) => ( //${tl.colorSelected}
+                <div key = {idx} className={`bg-red-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}>
+                    {tl.description}
                 </div>
             ))}
         </body>
