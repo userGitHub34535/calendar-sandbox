@@ -3,9 +3,13 @@ import React, {useState, useEffect, useContext} from 'react';
 import GlobalContext from '../Context/GlobalContext';
 
 export default function Day({day/*, rowIdx*/}) {
-  
+
     const [dayTLs, setDayTLs] = useState([]);
-    const {savedTLs} = useContext(GlobalContext);
+    const {setShowTLForm
+        , savedTLs
+        , calendarViewUISelectedTL
+        , setCalendarViewUISelectedTL
+    } = useContext(GlobalContext);
 
     useEffect(() => {
         const relevantTLs = savedTLs.filter((tl) => dayjs(tl.startTime).format("DD-MM-YY") === day.format("DD-MM-YY"));
@@ -33,9 +37,13 @@ export default function Day({day/*, rowIdx*/}) {
                 {day.format("DD")}
             </p>    
         </header>
-        <body>
+        <body onClick={() => setShowTLForm(true)}>
             {dayTLs.map((tl, idx) => ( //${tl.colorSelected}
-                <div key = {idx} className={`bg-red-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}>
+                <div 
+                    key = {idx} 
+                    onClick={() => setCalendarViewUISelectedTL(tl)}
+                    className={`bg-red-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}
+                    >
                     {tl.description}
                 </div>
             ))}

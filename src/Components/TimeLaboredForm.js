@@ -18,12 +18,29 @@ const colors = [
 ];
 
 export default function TimeLaboredForm() {
-    const {dispatchTLs} = useContext(GlobalContext);
+    const {
+        dispatchTLs
+        ,setShowTLForm
+        ,calendarViewUISelectedTL
+        ,setCalendarViewUISelectedTL
+    } = useContext(GlobalContext);
 
-    const [description, setDescription] = useState('');
-    const [startTime, setStartTime] = useState(new Date());
-    const [endTime, setEndTime] = useState(new Date());
-    const [colorSelected, setColorSelected] = useState(colors[2]); //colors[0]
+    const [description, setDescription] = useState(
+                                            calendarViewUISelectedTL 
+                                            ? calendarViewUISelectedTL.description 
+                                            : " ");
+    const [startTime, setStartTime] = useState(
+                                            calendarViewUISelectedTL 
+                                            ? calendarViewUISelectedTL.startTime 
+                                            : new Date());
+    const [endTime, setEndTime] = useState(
+                                            calendarViewUISelectedTL 
+                                            ? calendarViewUISelectedTL.endTime 
+                                            : new Date());
+    const [colorSelected, setColorSelected] = useState(
+                                            calendarViewUISelectedTL 
+                                            ? calendarViewUISelectedTL.colorSelected 
+                                            : colors[2]); 
 
     function handleSubmit(e) {
         e.preventDefault(); //prevent page from reloading
@@ -32,9 +49,14 @@ export default function TimeLaboredForm() {
             ,endTime
             ,description 
             ,colorSelected
-            ,id: Date.now()
+            ,id: calendarViewUISelectedTL ? calendarViewUISelectedTL.id : Date.now()
         }
-        dispatchTLs({type: 'push', payload: calendarTL}) 
+        if(calendarViewUISelectedTL) {
+            dispatchTLs({type: 'update', payload: calendarTL})
+        } else {
+            dispatchTLs({type: 'push', payload: calendarTL}) 
+        }
+        setShowTLForm(false);
     }
 
     return (
@@ -44,11 +66,21 @@ export default function TimeLaboredForm() {
                 <span className="material-icons-outlined text-gray-400">
                     drag_handle
                 </span>
-                <button>
-                <span className="material-icons-outlined text-gray-400">
-                    close
-                </span>
-                </button>
+                <div>
+                    {calendarViewUISelectedTL && (
+                        <button onClick={() => {
+                            dispatchTLs({type: "delete", payload: calendarViewUISelectedTL});
+                            setShowTLForm(false);
+                        }}>
+                        delete
+                        </button>
+                    )}
+                    <button onClick={() => setShowTLForm(false)}>
+                        <span className="material-icons-outlined text-gray-400">
+                            close
+                        </span>
+                    </button>    
+                </div>
             </header>
             <div className="p-3 ">
                 <div className="grid grid-cols-1/5 items-end gap-y-7">

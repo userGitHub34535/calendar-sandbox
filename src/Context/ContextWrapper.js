@@ -22,9 +22,11 @@ function initSavedTLs() {
 }
 
 export default function ContextWrapper(props) {
+    const [showTLForm, setShowTLForm] = useState(false);
     const [monthIndex, setMonthIndex] = useState(dayjs().month());
     const [savedTLs, dispatchTLs] = useReducer(savedTLReducer, [], initSavedTLs);
-
+    const [calendarViewUISelectedTL, setCalendarViewUISelectedTL] = useState(null);
+    
   useEffect(() => {
     localStorage.setItem("savedTLs", JSON.stringify(savedTLs));  //everytime savedTLs gets updated, we save it to storage
   }, [savedTLs])
@@ -36,12 +38,16 @@ export default function ContextWrapper(props) {
     
     return (
     <GlobalContext.Provider value={
-      {monthIndex
-      ,setMonthIndex
-      ,weekIndex
-      ,setWeekIndex
-      ,dispatchTLs
-      ,savedTLs }}>
+      {showTLForm
+        ,setShowTLForm
+        ,monthIndex
+        ,setMonthIndex
+        ,weekIndex
+        ,setWeekIndex
+        ,dispatchTLs
+        ,calendarViewUISelectedTL
+        ,setCalendarViewUISelectedTL
+        ,savedTLs }}>
         {props.children}
     </GlobalContext.Provider>
   )
