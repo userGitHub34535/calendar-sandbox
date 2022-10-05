@@ -7,7 +7,6 @@ export default function Day({day/*, rowIdx*/}) {
     const [dayTLs, setDayTLs] = useState([]);
     const {setShowTLForm
         , savedTLs
-        , calendarViewUISelectedTL
         , setCalendarViewUISelectedTL
     } = useContext(GlobalContext);
 
@@ -37,7 +36,7 @@ export default function Day({day/*, rowIdx*/}) {
                 {day.format("DD")}
             </p>    
         </header>
-        <body onClick={() => setShowTLForm(true)}>
+        <body onClick={() => {setShowTLForm(true)}}>
             {dayTLs.map((tl, idx) => ( //${tl.colorSelected}
                 <div 
                     key = {idx} 

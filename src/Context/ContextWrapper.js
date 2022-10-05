@@ -31,6 +31,12 @@ export default function ContextWrapper(props) {
     localStorage.setItem("savedTLs", JSON.stringify(savedTLs));  //everytime savedTLs gets updated, we save it to storage
   }, [savedTLs])
 
+  useEffect(() => {
+    if(!showTLForm) {
+      setCalendarViewUISelectedTL(null);
+    }
+  }, [showTLForm]);
+
     //require this plugin to use .week() here below
     var weekOfYear = require('dayjs/plugin/weekOfYear')
     dayjs.extend(weekOfYear)

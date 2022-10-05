@@ -11,7 +11,7 @@ import TimeLaboredForm from './Components/TimeLaboredForm';
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const [currentWeek, setCurrentWeek] = useState(getWeek());
-  const {monthIndex, weekIndex} = useContext(GlobalContext);
+  const {monthIndex, weekIndex, showTLForm} = useContext(GlobalContext);
   
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex))
@@ -24,7 +24,7 @@ function App() {
   console.table(getWeek());  
   return (
     <React.Fragment>
-    <TimeLaboredForm />
+    { showTLForm && <TimeLaboredForm />}
     <div className="h-screen flex flex-columns">
       <CalendarHeader />
       <div className="flex flex-1">
