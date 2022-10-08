@@ -102,7 +102,7 @@ export default function TimeLaboredForm() {
                         {colors.map((col, i) => (
                             <span 
                                 key={i}  
-                                className={`bg-${col}-500 w-6 h-6 rounded-full flex items-center justify-center`}
+                                className={`border bg-${col}-500 w-6 h-6 rounded-full flex items-center justify-center`}
                                 onClick={() => setColorSelected(col)}>
                                 {colorSelected === col && <span >=</span>}
                             </span>
