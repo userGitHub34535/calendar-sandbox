@@ -1,9 +1,6 @@
-//the EventModal.js
-import dayjs from 'dayjs';
+import axios from 'axios';
 import React, {useState, useContext} from 'react';
 import DateTimePicker from 'react-datetime-picker';
-import DateTimeInput from 'react-datetime-picker';
-import TimePicker from 'react-time-picker';
 import GlobalContext from '../Context/GlobalContext';
 
 const colors = [
@@ -85,8 +82,8 @@ export default function TimeLaboredForm() {
             <div className="p-3 ">
                 <div className="grid grid-cols-1/5 items-end gap-y-7">
                     {/* <div></div> */}
-                    <DateTimeInput  autoFocus={true} format="HH:mm MM-dd-yyy" value={startTime} onChange={setStartTime} disableClock={true} />
-                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={endTime} onChange={setEndTime}  disableClock={true} />
+                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={startTime} onChange={setStartTime} disableClock={true} autoFocus={true} />
+                    <DateTimePicker format="HH:mm MM-dd-yyyy" value={endTime}   onChange={setEndTime}   disableClock={true} />
                     <input 
                         type="text" 
                         name="description" 
