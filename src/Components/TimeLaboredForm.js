@@ -40,6 +40,7 @@ export default function TimeLaboredForm() {
                                             : colors[2]); 
 
     function handleSubmit(e) {
+        //SS- read this & do this tmmr - https://reactgo.com/react-post-request-axios/
         e.preventDefault(); //prevent page from reloading
         const calendarTL = {
             startTime  //I think it's a great idea to save DateTimes to the DB as ISO 8601 (UTC) times, and then convert them to the locale time at the point of displaying them in the UI

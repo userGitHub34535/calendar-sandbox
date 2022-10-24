@@ -7,7 +7,6 @@ export default function Home() {
     const [timeLaboureds, setTimeLaboureds] = useState([])
 
     useEffect(() => {
-        console.log("Test useEffect SS");
         loadTimeLaboureds();
     }, [])
     

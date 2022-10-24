@@ -25,22 +25,18 @@ export default function ContextWrapper(props) {
     const [showTLForm, setShowTLForm] = useState(false);
     const [monthIndex, setMonthIndex] = useState(dayjs().month());
     const [savedTLs, dispatchTLs] = useReducer(savedTLReducer, [], initSavedTLs);
-    const [calendarViewUISelectedTL, setCalendarViewUISelectedTL] = useState(null);
+    const [calendarViewUISelectedTL, setCalendarViewUISelectedTL] = useState(null);   
+    //this plugin needs .week() here below
+    var weekOfYear = require('dayjs/plugin/weekOfYear')
+    dayjs.extend(weekOfYear)
+    const [weekIndex, setWeekIndex] = useState(dayjs().week());
     
-  useEffect(() => {
-    localStorage.setItem("savedTLs", JSON.stringify(savedTLs));  //everytime savedTLs gets updated, we save it to storage
-  }, [savedTLs])
 
   useEffect(() => {
     if(!showTLForm) {
       setCalendarViewUISelectedTL(null);
     }
   }, [showTLForm]);
-
-    //require this plugin to use .week() here below
-    var weekOfYear = require('dayjs/plugin/weekOfYear')
-    dayjs.extend(weekOfYear)
-    const [weekIndex, setWeekIndex] = useState(dayjs().week());
     
     return (
     <GlobalContext.Provider value={
