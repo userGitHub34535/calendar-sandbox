@@ -7,8 +7,8 @@ const GlobalContext = React.createContext({
     ,setWeekIndex: (index) => {}
     ,showTLForm: true
     ,setShowTLForm: () => {}
-    ,dispatchTLs: ({type, payload}) => {}
     ,savedTLs: []
+    ,dispatchTLs: ({type, payload}) => {}
     ,calendarViewUISelectedTL: null
     ,setCalendarViewUISelectedTL : () => {}
 })
